@@ -84,12 +84,12 @@ struct HomeView: View {
     }
     
     var groceryBudgetCard: some View {
-        VStack(alignment: .leading, spacing: 10) { // Added a VStack for the title and the card
-            Text("Grocery budget") // The title you requested
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Grocery budget")
                 .font(.headline)
                 .fontWeight(.bold)
                 .foregroundColor(.black)
-                .padding(.horizontal, 5) // Added horizontal padding to align with the card
+                .padding(.horizontal, 5)
 
             HStack(spacing: 15) {
                 Image(systemName: "wallet.pass")
@@ -128,7 +128,7 @@ struct HomeView: View {
         VStack(alignment: .leading) {
             HStack {
                 Text("Expired products")
-                    .font(.title2)
+                    .font(.headline)
                     .bold()
                 Spacer()
                 NavigationLink(destination: ProductListView()) {
@@ -162,7 +162,7 @@ struct HomeView: View {
         VStack(alignment: .leading) {
             HStack {
                 Text("Expiring Soon")
-                    .font(.title2)
+                    .font(.headline)
                     .bold()
                 Spacer()
                 NavigationLink(destination: ProductListView()) {
@@ -208,51 +208,73 @@ struct HomeView: View {
     }
     
     var familyMembersCard: some View {
-        VStack {
-             HStack {
+        VStack(spacing: 20) {
+            HStack {
+                Image(systemName: "person.3.fill")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.green)
+                    .clipShape(Circle())
+
                 Text("Total Family Members")
                     .font(.headline)
+                    .fontWeight(.bold)
+                
+                Text("4")
+                        .font(.caption.bold())
+                        .foregroundColor(.secondary)
+                        .padding(8)
+                        .background(Color.white.opacity(0.15))
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().stroke(Color.gray.opacity(0.4), lineWidth: 1)
+                        )
+                
                 Spacer()
-                Image(systemName: "person.2.fill")
-                    .foregroundColor(.green)
             }
-            .padding([.horizontal, .top])
-
+            
             HStack {
-                VStack {
+                VStack(spacing: 8) {
                     Text("Adults")
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.green)
                     Text("2")
                         .font(.title)
-                        .bold()
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
                 }
                 .frame(maxWidth: .infinity)
                 
                 Divider().frame(height: 40)
                 
-                VStack {
+                VStack(spacing: 8) {
                     Text("Children's")
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.green)
                     Text("1")
                         .font(.title)
-                        .bold()
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
                 }
                 .frame(maxWidth: .infinity)
             }
-            .padding(.vertical)
-            
-            Button("View") { }
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.green)
-            .cornerRadius(12)
-            .padding()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(15)
+
+            Button("View") {}
+                .fontWeight(.bold)
+                .foregroundColor(.green)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(
+                    Capsule()
+                        .stroke(Color.gray.opacity(0.1), lineWidth: 2)
+                )
         }
+        .padding()
         .background(Color.white)
         .cornerRadius(20)
-        .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 2)
+        .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
 }
