@@ -10,16 +10,9 @@ import SwiftUI
 struct ContentView: View {
     
     init() {
-            // Create a new appearance object
             let appearance = UITabBarAppearance()
-            
-            // This removes the default translucent background
             appearance.configureWithOpaqueBackground()
-            
-            // Set the background color to black
             appearance.backgroundColor = UIColor.black
-            
-            // Apply this new appearance to all tab bars in the app
             UITabBar.appearance().standardAppearance = appearance
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
